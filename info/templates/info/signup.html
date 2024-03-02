@@ -1,0 +1,80 @@
+{% extends 'info/sign.html' %}
+{% load static %}
+{% block main_area %}
+
+<div class="row">
+    <div class="col-2">
+    </div>
+
+    <div class="col-8" style="font-size: 20px;">
+        <div class="mt-5 d-flex justify-content-center" style="font-size: 30px;">
+            Sign Up
+        </div>
+
+        <div class="mt-5 d-flex justify-content-center">
+            {% if error %}
+            <div class="mt-3 mb-5 ms-5 me-5 p-5 rounded-4 border border-dark border-2" style="text-align: center;">
+                {{ error }}
+            </div>
+            {% endif %}
+        </div>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mt-5 d-flex justify-content-center">
+                <div class="p-3">
+                    Name&nbsp;&nbsp;
+                </div>
+                <div class="mb-5 pt-1 pb-1 ps-2 pe-2 rounded-4 border border-dark border-2">
+                    {{ form.first_name }}
+                </div>
+            </div>
+
+            <div class="mt-5" style="font-size: 20px; text-align: center;">
+                Please enter the ID.
+                <div class="mt-3 mb-5 d-flex justify-content-center">
+                    <div class="pt-1 pb-1 ps-2 pe-2 rounded-pill border border-dark border-2" id="id">
+                        {{ form.username }}
+                    </div>
+                </div>
+                Please enter your email address.
+                <div class="mt-3 mb-5 d-flex justify-content-center">
+                    <div class="pt-1 pb-1 ps-2 pe-2 rounded-pill border border-dark border-2" id="password">
+                        {{ form.email }}
+                    </div>
+                </div>
+                Please enter the password you want to use.
+                <div class="mt-3 mb-5 d-flex justify-content-center">
+                    <div class="pt-1 pb-1 ps-2 pe-2 rounded-pill border border-dark border-2" id="password">
+                        {{ form.password }}
+                    </div>
+                </div>
+
+                <br />
+
+                <div class="mt-3 mb-5 d-flex justify-content-center">
+                    <div class="rounded-3 border border-dark border-2">
+                        <input type="hidden" name="next" value="{{ next }}">
+                        <input type="submit" id="loginbutton" class="form-control rounded-3 border-0 pt-2 pb-2 ps-4 pe-4" value="Signup"
+                               style="font-size: 20px;">
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="mt-3 mb-5 d-flex justify-content-center">
+            <a href="{% url 'login' %}?next={{ next }}" class="signup1 signup2">
+                <div class="rounded-3 border border-dark border-2 pt-2 pb-2 ps-2 pe-2 text-center">
+                    Cancel
+                </div>
+            </a>
+        </div>
+
+        <br /><br /><br /><br /><br /><br />
+    </div>
+
+    <div class="col-2">
+    </div>
+</div>
+
+{% endblock %}

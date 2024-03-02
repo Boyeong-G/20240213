@@ -1,0 +1,109 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block main_area %}
+
+<div class="mt-5" style="text-align: center">
+    <div class="row">
+        <div class="col-2">
+        </div>
+
+        <div class="col-8">
+            <div class="d-flex justify-content-around">
+                <a href="{% url 'my_list' %}" class="font_color5 font_color6">
+                    <div class="pt-3 pb-2 ps-5 pe-5 rounded-4 border border-3 border-dark m_card_bg" id="choice">
+                        <h4>
+                            Recipe
+                        </h4>
+                    </div>
+                </a>
+                <a href="{% url 'my_list_question' %}" class="font_color5 font_color6">
+                    <div class="pt-3 pb-2 ps-5 pe-5 rounded-4 border border-3 border-dark m_card_bg" id="choice">
+                        <h4>
+                            &nbsp;&nbsp;Q&A&nbsp;&nbsp;
+                        </h4>
+                    </div>
+                </a>
+                <a href="{% url 'my_list_likes' %}" class="font_color5 font_color6">
+                    <div class="pt-3 pb-2 ps-5 pe-5 rounded-4 border border-3 border-dark m_card_bg" id="choice">
+                        <h4>
+                            &nbsp;Likes&nbsp;
+                        </h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-2">
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="m-5 pt-3">
+        <div class="mt-1 mb-4">
+            <div class="row">
+                <div class="col-2">
+                </div>
+
+                <div class="col-8">
+                    <h4>Recipe I Liked</h4>
+                </div>
+
+                <div class="col-2">
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="d-flex justify-content-around">
+                <div class="align-self-center m-1">
+                    {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}" class="font_color5 font_color6" style="font-size: 30px;">
+                        <i class="fa-solid fa-circle-chevron-left"></i>
+                    </a>
+                    {% else %}
+                    <a href="" class="font_color5 font_color6" style="font-size: 30px; visibility: hidden;">
+                        <i class="fa-solid fa-circle-chevron-left"></i>
+                    </a>
+                    {% endif %}
+                </div>
+
+                <div class="align-self-center">
+                    {% for r in page_obj %}
+                    <div class="m-1">
+                        <a href="{{ r.get_absolute_url }}" class="font_color5 font_color6">
+                            <div class="card pt-3 pb-2 ps-3 pe-3 m_card_bg m_card_border" style="width: 50rem; height: 6rem;">
+                                <div class="card-body d-flex justify-content-left">
+                                    <i class="fa-solid fa-heart" style="font-size: 28px; color: red;"></i>&nbsp;&nbsp;&nbsp;{{ r.like_users.all| length }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <h5 class="card-title" style="text-align: center;">{{ r.dish_name | truncatechars:25 }}</h5>
+                                    <span class="ms-auto text-muted" style="font-size: 12px;">
+                                        {{ r.updated_at.year }}/{{ r.updated_at.month }}/{{ r.updated_at.day }}&nbsp;&nbsp;{{ r.updated_at.time }}&nbsp;
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="align-self-center m-1">
+                    {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}" class="font_color5 font_color6" style="font-size: 30px;">
+                        <i class="fa-solid fa-circle-chevron-right"></i>
+                    </a>
+                    {% else %}
+                    <a href="" class="font_color5 font_color6" style="font-size: 30px; visibility: hidden;">
+                        <i class="fa-solid fa-circle-chevron-left"></i>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+<br />
+<br />
+
+{% endblock %}

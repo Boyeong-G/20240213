@@ -1,0 +1,40 @@
+.summary {
+    background-color: #80E12A;
+}
+
+#write_question {
+    background-color: #F2F2F2;
+}
+
+.fileAdd {
+    text-align: right;
+    font-size: 15px
+}
+
+.divSAVE {
+    background-color: #C8FAC8;
+    border: 3px solid #000000;
+    border-radius: 50px;
+}
+
+.buttonSAVE {
+    background-color: #C8FAC8;
+    text-align: center;
+    font-size: 25px;
+    color: #000000;
+    border-radius: 50px;
+}
+
+.divEXIT {
+    background-color: #FFFFFF;
+    border: 3px solid #000000;
+    border-radius: 50px;
+}
+
+.buttonEXIT {
+    background-color: #FFFFFF;
+    text-align:center;
+    font-size: 25px;
+    color: #000000;
+    border-radius: 50px;
+}

@@ -1,0 +1,130 @@
+{% extends 'info/base.html' %}
+{% load static %}
+{% block main_area %}
+
+<div style="font-size: 20px;">
+    <div class="m-5">
+        <div class="row p-2">
+            <div class="col-3">
+                Name
+            </div>
+            <div class="col-9">
+                {{ user.first_name }}
+            </div>
+        </div>
+        <div class="row p-2">
+            <div class="col-3 ">
+                Joined Date
+            </div>
+            <div class="col-9">
+                {{ user.date_joined.year }}.{{ user.date_joined.month }}.{{ user.date_joined.day }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ user.date_joined.time }}&nbsp;
+            </div>
+        </div>
+        <div class="row p-2">
+            <div class="col-3 ">
+                Last Login
+            </div>
+            <div class="col-9">
+                {{ user.last_login.year }}.{{ user.last_login.month }}.{{ user.last_login.day }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ user.last_login.time }}&nbsp;
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    <div class="m-5">
+        <div class="row p-2">
+            <div class="col-3">
+                E-mail
+            </div>
+            <div class="col-6">
+                {{ user.email }}
+            </div>
+        </div>
+        <div class="row p-2">
+            <div class="col-3 ">
+                ID
+            </div>
+            <div class="col-6">
+                {{ user.username }}
+            </div>
+            <div class="col-3">
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#changeID">
+                    Change your ID
+                </button>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    <div class="m-5">
+        <div class="p-2">
+            <div class="d-flex justify-content-start">
+                <h4>Register food allergy information</h4>
+                <div class="ms-auto">
+                    <button type="button" class="rounded-circle border-0" data-bs-toggle="modal" data-bs-target="#addAllergy">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <div class="align-content">
+                    <div class="card m-5 pt-3 pb-2 ps-3 pe-3 border border-dark" style="width: 25rem; height: 4rem; text-align:center;">
+                        comments likes good
+                    </div>
+                    <div class="card m-5 pt-3 pb-2 ps-3 pe-3 border border-dark" style="width: 25rem; height: 4rem; text-align:center;">
+                        comments likes good
+                    </div>
+                    <div class="card m-5 pt-3 pb-2 ps-3 pe-3 border border-dark" style="width: 25rem; height: 4rem; text-align:center;">
+                        comments likes good
+                    </div>
+                    <div class="card m-5 pt-3 pb-2 ps-3 pe-3 border border-dark" style="width: 25rem; height: 4rem; text-align:center;">
+                        comments likes good
+                    </div>
+                    <div class="card m-5 pt-3 pb-2 ps-3 pe-3 border border-dark" style="width: 25rem; height: 4rem; text-align:center;">
+                        comments likes good
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal ID -->
+<div class="modal fade" id="changeID" tabindex="-1" aria-labelledby="changeIDLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="changeIDLabel">Change your ID</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                input
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Allergy -->
+<div class="modal fade" id="addAllergy" tabindex="-1" aria-labelledby="addAllergyLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addAllergyLabel">Add Allergy</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                input
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

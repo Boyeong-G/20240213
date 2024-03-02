@@ -1,0 +1,113 @@
+{% extends 'recipe/base.html' %}
+{% load static %}
+{% block main_area %}
+
+<!-- topbar -->
+<div class="ms-5 me-5 mt-3" style="text-align: center">
+    <h3>Recipe</h3>
+    <hr />
+</div>
+
+<div class="row">
+    <div class="col-2">
+    </div>
+
+    <div class="col-8">
+        <div class="mt-2 mb-2 text-center">
+            {% if recipe.head_image %}
+            <img src="{{ recipe.head_image.url }}" alt="image" class="img-fluid">
+            {% else %}
+            <img src="{% static 'img/20240217.jpg' %}" alt="food" class="img-fluid">
+            {% endif %}
+        </div>
+
+        <div class="row">
+            <div class="col-1">
+            </div>
+
+            <div class="col-10">
+                <div class="p-3">
+                    <div class="mb-5 ms-3 me-3">
+                        <div class="d-flex justify-content-start">
+                            <h3>{{ recipe.dish_name }}</h3>
+                            <div id="author_date">
+                                <div class="d-flex justify-content-start">
+                                    {% if user.is_authenticated %}
+                                    {% if user == recipe.author %}
+                                    <div class="ms-auto" style="font-size: 25px;">
+                                        <a href="{% url 'recipe_edit' recipe.id %}" role="button" style="color: black; text-decoration: none;">
+                                            <i class="fa-regular fa-pen-to-square"></i>
+                                        </a>
+                                        &nbsp;
+                                        <a href="{% url 'recipe_delete' recipe.id %}" role="button" style="color: black; text-decoration: none;">
+                                            <i class="fa-regular fa-trash-can"></i>
+                                        </a>
+                                    </div>
+                                    {% else %}
+                                    <div class="ms-auto mt-2 me-3 text-muted">
+                                        author: {{ recipe.author }}
+                                    </div>
+                                    {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-muted">
+                            <span id="author_date">
+                                {{ recipe.created_at.year }}/{{ recipe.created_at.month }}/{{ recipe.created_at.day }}&nbsp;&nbsp;{{ recipe.created_at.time }}&nbsp;
+                                {% if recipe.created_at != recipe.updated_at %}
+                                (edited. {{ recipe.updated_at.year }}/{{ recipe.updated_at.month }}/{{ recipe.updated_at.day }}&nbsp;&nbsp;{{ recipe.updated_at.time }})
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="mb-5 ms-3 me-3">
+                        <div class="d-flex justify-content-start">
+                            <div class="p-2 ps-4 pe-4 rounded-4 border border-1 border-dark" id="ingredient">
+                                <b>Ingredient</b>
+                            </div>
+                            <div class="p-2 ps-4 pe-4">
+                                {{ recipe.ingredient }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-5 ms-3 me-3">
+                        <div class="how_to_cook p-4 rounded-5 border border-1 border-dark">
+                            <div class="row">
+                                <div class="col-4">
+                                </div>
+                                <div class="col-4">
+                                    <div class="p-2 rounded-5" id="how_to_cook_title">
+                                        <b>how to cook</b>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                </div>
+                            </div>
+                            <div class="m-5">
+                                {{ recipe.recipe }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-1">
+            </div>
+
+            <div class="m-5">
+                &nbsp;
+            </div>
+        </div>
+    </div>
+
+    <div class="col-2">
+    </div>
+</div>
+
+<!-- bottombar -->
+{% include 'recipe/bottom.html' %}
+
+{% endblock %}

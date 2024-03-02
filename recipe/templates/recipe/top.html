@@ -1,0 +1,28 @@
+{% load static %}
+
+<div class="ms-5 me-5 mt-3 " style="text-align: center">
+    <div class="d-flex justify-content-around">
+        <a href="{% url 'recipe_list' %}" class="top_a top_hover">
+            <div class="rounded-3" id="choice">
+                <h3>
+                    HOME
+                </h3>
+            </div>
+        </a>
+        <a href="{% url 'recipe_list_hot' %}" class="top_a top_hover">
+            <div class="rounded-3" id="choice">
+                <h3>
+                    Popular&nbsp;Recipes
+                </h3>
+            </div>
+        </a>
+        <a href="{% url 'recipe_list_recent' %}" class="top_a top_hover">
+            <div class="rounded-3" id="choice">
+                <h3>
+                    Recent&nbsp;Recipes
+                </h3>
+            </div>
+        </a>
+    </div>
+    <hr />
+</div>

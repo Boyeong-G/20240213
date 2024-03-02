@@ -1,0 +1,37 @@
+{% extends 'recipe/base.html' %}
+{% load static %}
+{% block main_area %}
+
+<!-- topbar -->
+{% include 'recipe/top.html' %}
+
+<div class="row">
+    <div class="col-2">
+    </div>
+
+    <div class="col-8">
+        <div class="row m-5">
+            {% for r in recipe %}
+            <div class="mb-5 d-flex justify-content-center">
+                <a href="{{ r.get_absolute_url }}" class="font_color3 font_color4">
+                    <div class="card pt-3 pb-2 ps-3 pe-3 r_card_bg r_card_border" style="width: 35rem">
+                        {% if r.head_image %}
+                        <img src="{{ r.head_image.url }}" class="card-img-top" alt="image">
+                        {% else %}
+                        <img src="{% static 'img/20240218.jpg' %}" class="card-img-top" alt="food">
+                        {% endif %}
+                        <hr />
+                        <div class="card-body">
+                            <h5 class="card-title" style="text-align: center;">{{ r.dish_name | truncatechars:15 }}</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+
+    <div class="col-2">
+    </div>
+</div>
+
+{% endblock %}

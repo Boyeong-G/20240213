@@ -1,0 +1,27 @@
+.font_color1 {
+    color: black;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.font_color2:hover {
+    color: black;
+}
+
+.back_color:hover {
+    background-color: lightgray;
+}
+
+.q_search {
+    background-color: #80E12A;
+    font-size: 25px;
+}
+
+.leftAlign {
+    display: flex;
+    flex-direction: row;
+}
+
+#rightAlign {
+    margin-left: auto;
+}

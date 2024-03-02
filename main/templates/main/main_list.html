@@ -1,0 +1,261 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block main_area %}
+
+<!-- topbar -->
+{% include 'main/top.html' %}
+
+<div>
+    <div class="m-5 pt-3">
+        <div class="row">
+            <div class="col-2">
+            </div>
+
+            <div class="col-8">
+                <div class="mt-4 mb-4">
+                    <h4>인기 레시피</h4>
+                </div>
+            </div>
+
+            <div class="col-2">
+            </div>
+        </div>
+
+        <div>
+            {% if question_1 and question_2 and question_3 and question_4 and question_5 and question_6 %}
+            <div id="carouselHotRecipe" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="d-flex justify-content-center">
+                            <div class="m-3">
+                                <a href="{{ recipe_1.get_absolute_url }}" class="font_color5 font_color6">
+                                    <div class="card pt-3 pb-2 ps-3 pe-3 m_card_bg m_card_border" style="width: 25rem; height: 23rem;">
+                                        {% if recipe_1.head_image %}
+                                        <img src="{{ recipe_1.head_image.url }}" class="card-img-top" alt="image">
+                                        {% else %}
+                                        <img src="{% static 'img/20240218.jpg' %}" class="card-img-top" alt="food">
+                                        {% endif %}
+                                        <hr />
+                                        <div class="card-body">
+                                            <h5 class="card-title" style="text-align: center;">{{ recipe_1.dish_name | truncatechars:10 }}</h5>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="m-3">
+                                <a href="{{ recipe_2.get_absolute_url }}" class="font_color5 font_color6">
+                                    <div class="card pt-3 pb-2 ps-3 pe-3 m_card_bg m_card_border" style="width: 25rem; height: 23rem;">
+                                        {% if recipe_2.head_image %}
+                                        <img src="{{ recipe_2.head_image.url }}" class="card-img-top" alt="image">
+                                        {% else %}
+                                        <img src="{% static 'img/20240218.jpg' %}" class="card-img-top" alt="food">
+                                        {% endif %}
+                                        <hr />
+                                        <div class="card-body">
+                                            <h5 class="card-title" style="text-align: center;">{{ recipe_2.dish_name | truncatechars:10 }}</h5>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center">
+                            <div class="m-3">
+                                <a href="{{ recipe_3.get_absolute_url }}" class="font_color5 font_color6">
+                                    <div class="card pt-3 pb-2 ps-3 pe-3 m_card_bg m_card_border" style="width: 25rem; height: 23rem;">
+                                        {% if recipe_3.head_image %}
+                                        <img src="{{ recipe_3.head_image.url }}" class="card-img-top" alt="image">
+                                        {% else %}
+                                        <img src="{% static 'img/20240218.jpg' %}" class="card-img-top" alt="food">
+                                        {% endif %}
+                                        <hr />
+                                        <div class="card-body">
+                                            <h5 class="card-title" style="text-align: center;">{{ recipe_3.dish_name | truncatechars:10 }}</h5>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="m-3">
+                                <a href="{{ recipe_4.get_absolute_url }}" class="font_color5 font_color6">
+                                    <div class="card pt-3 pb-2 ps-3 pe-3 m_card_bg m_card_border" style="width: 25rem; height: 23rem;">
+                                        {% if recipe_4.head_image %}
+                                        <img src="{{ recipe_4.head_image.url }}" class="card-img-top" alt="image">
+                                        {% else %}
+                                        <img src="{% static 'img/20240218.jpg' %}" class="card-img-top" alt="food">
+                                        {% endif %}
+                                        <hr />
+                                        <div class="card-body">
+                                            <h5 class="card-title" style="text-align: center;">{{ recipe_4.dish_name | truncatechars:10 }}</h5>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center">
+                            <div class="m-3">
+                                <a href="{{ recipe_5.get_absolute_url }}" class="font_color5 font_color6">
+                                    <div class="card pt-3 pb-2 ps-3 pe-3 m_card_bg m_card_border" style="width: 25rem; height: 23rem;">
+                                        {% if recipe_5.head_image %}
+                                        <img src="{{ recipe_5.head_image.url }}" class="card-img-top" alt="image">
+                                        {% else %}
+                                        <img src="{% static 'img/20240218.jpg' %}" class="card-img-top" alt="food">
+                                        {% endif %}
+                                        <hr />
+                                        <div class="card-body">
+                                            <h5 class="card-title" style="text-align: center;">{{ recipe_5.dish_name | truncatechars:10 }}</h5>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="m-3">
+                                <a href="{{ recipe_6.get_absolute_url }}" class="font_color5 font_color6">
+                                    <div class="card pt-3 pb-2 ps-3 pe-3 m_card_bg m_card_border" style="width: 25rem; height: 23rem;">
+                                        {% if recipe_6.head_image %}
+                                        <img src="{{ recipe_6.head_image.url }}" class="card-img-top" alt="image">
+                                        {% else %}
+                                        <img src="{% static 'img/20240218.jpg' %}" class="card-img-top" alt="food">
+                                        {% endif %}
+                                        <hr />
+                                        <div class="card-body">
+                                            <h5 class="card-title" style="text-align: center;">{{ recipe_6.dish_name | truncatechars:10 }}</h5>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselHotRecipe" data-bs-slide="prev">
+                        <i class="fa-solid fa-circle-chevron-left font_color5 font_color6" aria-hidden="true" style="font-size: 30px;"></i>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselHotRecipe" data-bs-slide="next">
+                        <i class="fa-solid fa-circle-chevron-right font_color5 font_color6" aria-hidden="true" style="font-size: 30px;"></i>
+                    </button>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="m-5 pt-5">
+        <div class="row">
+            <div class="col-2">
+            </div>
+
+            <div class="col-8">
+                <div class="mt-4 mb-4">
+                    <h4>최근 Q&A</h4>
+                </div>
+            </div>
+
+            <div class="col-2">
+            </div>
+        </div>
+
+
+        <div>
+            {% if question_1 and question_2 and question_3 and question_4 and question_5 and question_6 %}
+            <div id="carouselRecentQuestion" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="d-flex justify-content-center">
+                            <div class="m-3">
+                                <a href="{{ question_1.get_absolute_url }}" class="font_color5 font_color6">
+                                    <div class="card pt-3 pb-2 ps-3 pe-3 m_card_bg m_card_border" style="width: 25rem; height: 23rem;">
+                                        <div class="card-body">
+                                            <h5 class="card-title" style="text-align: center;">Q. {{ question_1.summary | truncatechars:10 }}</h5>
+                                            <hr />
+                                            <p>{{ question_1.question | truncatechars:300 }}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="m-3">
+                                <a href="{{ question_2.get_absolute_url }}" class="font_color5 font_color6">
+                                    <div class="card pt-3 pb-2 ps-3 pe-3 m_card_bg m_card_border" style="width: 25rem; height: 23rem;">
+                                        <div class="card-body">
+                                            <h5 class="card-title" style="text-align: center;">Q. {{ question_2.summary | truncatechars:10 }}</h5>
+                                            <hr />
+                                            <p>{{ question_2.question | truncatechars:300 }}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center">
+                            <div class="m-3">
+                                <a href="{{ question_3.get_absolute_url }}" class="font_color5 font_color6">
+                                    <div class="card pt-3 pb-2 ps-3 pe-3 m_card_bg m_card_border" style="width: 25rem; height: 23rem;">
+                                        <div class="card-body">
+                                            <h5 class="card-title" style="text-align: center;">Q. {{ question_3.summary | truncatechars:10 }}</h5>
+                                            <hr />
+                                            <p>{{ question_3.question | truncatechars:300 }}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="m-3">
+                                <a href="{{ question_4.get_absolute_url }}" class="font_color5 font_color6">
+                                    <div class="card pt-3 pb-2 ps-3 pe-3 m_card_bg m_card_border" style="width: 25rem; height: 23rem;">
+                                        <div class="card-body">
+                                            <h5 class="card-title" style="text-align: center;">Q. {{ question_4.summary | truncatechars:10 }}</h5>
+                                            <hr />
+                                            <p>{{ question_4.question | truncatechars:300 }}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center">
+                            <div class="m-3">
+                                <a href="{{ question_5.get_absolute_url }}" class="font_color5 font_color6">
+                                    <div class="card pt-3 pb-2 ps-3 pe-3 m_card_bg m_card_border" style="width: 25rem; height: 23rem;">
+                                        <div class="card-body">
+                                            <h5 class="card-title" style="text-align: center;">Q. {{ question_5.summary | truncatechars:10 }}</h5>
+                                            <hr />
+                                            <p>{{ question_5.question | truncatechars:300 }}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="m-3">
+                                <a href="{{ question_6.get_absolute_url }}" class="font_color5 font_color6">
+                                    <div class="card pt-3 pb-2 ps-3 pe-3 m_card_bg m_card_border" style="width: 25rem; height: 23rem;">
+                                        <div class="card-body">
+                                            <h5 class="card-title" style="text-align: center;">Q. {{ question_6.summary | truncatechars:10 }}</h5>
+                                            <hr />
+                                            <p>{{ question_6.question | truncatechars:300 }}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselRecentQuestion" data-bs-slide="prev">
+                        <i class="fa-solid fa-circle-chevron-left font_color5 font_color6" aria-hidden="true" style="font-size: 30px;"></i>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselRecentQuestion" data-bs-slide="next">
+                        <i class="fa-solid fa-circle-chevron-right font_color5 font_color6" aria-hidden="true" style="font-size: 30px;"></i>
+                    </button>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+.top_a {
+    text-decoration: none;
+    color: #000000
+}
+
+.top_hover:hover {
+    color: #000000;
+}
+
+#choice:hover {
+    background-color: #C8FAC8;
+}

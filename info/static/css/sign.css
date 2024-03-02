@@ -1,0 +1,29 @@
+#warning {
+    text-align: center;
+    border-color: #FF7F50;
+    background-color: #FFC7AD;
+}
+
+#id {
+    background-color: #80E12A;
+    text-align: center;
+}
+
+#password {
+    text-align: center;
+}
+
+#loginbutton {
+    background-color: #C8FAC8;
+    box-shadow: none;
+}
+
+.signup1 {
+    color: black;
+    text-decoration: none;
+    box-shadow: none
+}
+
+.signup2:hover {
+    color: black;
+}

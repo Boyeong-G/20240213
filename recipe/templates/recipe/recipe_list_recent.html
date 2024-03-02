@@ -1,0 +1,36 @@
+{% extends 'recipe/base.html' %}
+{% load static %}
+{% block main_area %}
+
+<!-- topbar -->
+{% include 'recipe/top.html' %}
+
+<div class="row">
+    <div class="col-2">
+    </div>
+
+    <div class="col-8">
+        <div class="row m-5">
+            <div class="mb-5 ps-5 pe-5">
+                {% for r in recipe %}
+                <div class="m-3 p-1">
+                    <a href="{{ r.get_absolute_url }}" class="font_color3 font_color4 back_color">
+                        <div class="back_color background pt-2 ps-4 pe-4">
+                            <div class="d-flex flex-row">
+                                <h4>{{ r.dish_name | truncatechars:15 }}</h4>
+                                <span class="text-muted ms-auto">({{ r.created_at.year }}/{{ r.created_at.month }}/{{ r.created_at.day }}&nbsp;&nbsp;{{ r.created_at.time }})</span>
+                            </div>
+                        </div>
+                    </a>
+                    <hr />
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-2">
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+.font_color3 {
+    color: black;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.font_color4:hover {
+    color: black;
+}
+
+.r_card_bg:hover {
+    background-color: #C8FAC8;
+    border: 3px solid lightgray;
+}
+
+.back_color:hover {
+    background-color: lightgray;
+}
+
+.r_search {
+    border: 3px solid #80E12A;
+    background-color: #FFFFFF;
+    font-size: 20px;
+}
+
+.r_card_border {
+    border: 1px solid black;
+}

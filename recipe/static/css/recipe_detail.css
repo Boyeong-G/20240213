@@ -1,0 +1,19 @@
+#author_date {
+    margin-left: auto;
+    font-size: 14px;
+}
+
+#ingredient {
+    background-color: #C8FAC8;
+    font-size: 17px;
+}
+
+.how_to_cook {
+    background-color: #F2F2F2;
+    font-size: 17px;
+}
+
+#how_to_cook_title {
+    background-color: #C8FAC8;
+    text-align: center;
+}

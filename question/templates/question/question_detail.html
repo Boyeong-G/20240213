@@ -1,0 +1,124 @@
+{% extends 'question/base.html' %}
+{% load static %}
+{% block main_area %}
+
+<div class="mt-2 mb-4 text-center">
+    {% if question.head_image %}
+    <img src="{{ question.head_image.url }}" alt="image" class="img-fluid">
+    {% endif %}
+</div>
+
+<div class="row">
+    <div class="col-1">
+    </div>
+
+    <div class="col-10">
+        <div class="mt-2 mb-1 ms-5 me-5 pt-1 pb-1 d-flex justify-content-start">
+            <h4>Q. {{ question.summary }}</h4>
+
+            {% if user.is_authenticated %}
+            {% if user == question.author %}
+            <div class="ms-auto" style="font-size: 25px;">
+                <a href="{% url 'question_edit' question.id %}" role="button" style="color: black; text-decoration: none;">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                </a>
+                &nbsp;
+                <a href="{% url 'question_delete' question.id %}" role="button" style="color: black; text-decoration: none;">
+                    <i class="fa-regular fa-trash-can"></i>
+                </a>
+            </div>
+            {% else %}
+            <div class="ms-auto mt-2 me-3 text-muted">
+                author: {{ question.author }}
+            </div>
+            {% endif %}
+            {% endif %}
+        </div>
+
+        <div class="mb-1 ms-5 me-5 pt-1 pb-1">
+            <div class="m-2 p-4" id="question">
+                {{ question.question }}
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-start">
+            <div class="mb-1 ms-5 me-5 pt-1 pb-1 text-muted">
+                <span id="date">
+                    {{ question.created_at.year }}/{{ question.created_at.month }}/{{ question.created_at.day }}&nbsp;&nbsp;{{ question.created_at.time }}&nbsp;<br />
+                    {% if question.created_at != question.updated_at %}
+                    (edited. {{ question.updated_at.year }}/{{ question.updated_at.month }}/{{ question.updated_at.day }}&nbsp;&nbsp;{{ question.updated_at.time }})
+                    {% endif %}
+                </span>
+            </div>
+            <div class="ms-auto">
+                <div class="d-flex justify-content-start">
+                    <a href="../" class="q_list1 q_list2">
+                        <div class="pt-1 pb-1 ps-2 pe-2 rounded-3 border border-dark border-2 text-center">
+                            List
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-1">
+    </div>
+</div>
+
+<div class="m-4 p-3 border-top border-dark border-bottom border-dark">
+    <div class="comments">
+        <h5>Comments</h5>
+        <span class="ms-auto">number of comments {{ comments_counts }}</span>
+    </div>
+    <div class="mt-3 mb-3">
+        {% if comments.exists %}
+        {% for comment in comments %}
+        <div class="d-flex" id="comment={{ comment.pk }}">
+            <div class="w-100 mt-1 pt-2 pb-2 ps-3 pe-3 rounded-4 border border-dark">
+                <div class="p-1 d-flex justify-content-start">
+                    {{ comment.comment | linebreaks }}
+                    {% if user.is_authenticated and user == comment.author %}
+                    <div class="ms-auto" style="font-size: 15px;">
+                        <a href="/question/delete_comment/{{ comment.pk }}" role="button" style="color: black; text-decoration: none;">
+                            <i class="fa-regular fa-trash-can"></i>
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="p-1 leftAlign">
+                    <span class="text-muted">
+                        {{ comment.created_at.year }}/{{ comment.created_at.month }}/{{ comment.created_at.day }}&nbsp;&nbsp;{{ comment.created_at.time }}&nbsp;<br />
+                    </span>
+                    <span id="rightAlign">Writer. {{ comment.author }}</span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+<!-- Comments Form -->
+<div class="mb-5 pt-3">
+    {% if user.is_authenticated %}
+    {% csrf_token %}
+    <form method="POST" action="{{ post.getabsolute_url }}new_comment/" id="comment-form">
+        <div class="row p-2">
+            <div class="col-11">
+                <div class="form-group">
+                    {{ comment_form.comment }}
+                </div>
+            </div>
+            <div class="col-1">
+                <button type="submit" class="ms-1 pt-1 pb-1 ps-3 pe-3 rounded-3 border border-2 border-dark ms-auto" style="background-color: #C8FAC8; font-size: 18px;">Send</button>
+            </div>
+        </div>
+    </form>
+    {% endif %}
+    <div class="mb-5">
+        <br /><br /><br />
+    </div>
+</div>
+
+{% endblock %}
